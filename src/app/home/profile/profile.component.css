@@ -1,0 +1,37 @@
+.centerDiv{
+    position: relative;
+    width: 50%;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    background-color: white;
+}
+.centerDiv img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.designationDiv{
+    margin-top: -14px;
+}
+
+.userDetails{
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
+}
+
+.userDetails p{
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px){
+    .designationDiv{
+        margin-top: 0px;
+    }
+}

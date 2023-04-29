@@ -1,0 +1,86 @@
+<div class="register">
+  <div class="center">
+    <h1>Register</h1>
+
+    <form #registerForm="ngForm" (ngSubmit)="submit(registerForm)">
+      <div class="formInput">
+        <input type="text" #name="ngModel" name="name" ngModel required />
+        <label>Full Name*</label>
+        <span></span>
+      </div>
+      <p class="text-danger" *ngIf="name.invalid && name.touched">
+        Please Enter Name
+      </p>
+
+      <div class="formInput">
+        <input
+          type="text"
+          #email="ngModel"
+          name="email"
+          ngModel
+          email
+          required
+        />
+        <label>Email*</label>
+        <span></span>
+      </div>
+      <p class="text-danger" *ngIf="email.invalid && email.touched">
+        Please Enter Valid Email
+      </p>
+
+      <div class="formInput">
+        <input
+          type="{{passProperty}}"
+          #password="ngModel"
+          name="password"
+          ngModel
+          required
+        />
+       
+        <label>Passsword</label> 
+        <mat-icon (click)="showPassword()" matSuffix>visibility</mat-icon>
+        <span></span>
+      </div>
+      <p class="text-danger" *ngIf="password.invalid && password.touched">
+        Please Enter Password
+      </p>
+
+      <div class="formInput">
+        <input type="text" #company="ngModel" name="company" ngModel required />
+        <label>Company</label>
+        <span></span>
+      </div>
+      <p class="text-danger" *ngIf="company.invalid && company.touched">
+        Please Enter Company Name
+      </p>
+
+      <div>
+        <form class="roleDiv">
+          <mat-form-field appearance="fill">
+            <mat-label>Select Your Role</mat-label>
+            <mat-select
+              [(ngModel)]="selectedValue"
+              name="food"
+              ngModel
+              #jobRole="ngModel"
+            >
+              <mat-option *ngFor="let role of roles" [value]="role.value">
+                {{ role.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </div>
+      <p class="text-danger" *ngIf="!selectedValue && jobRole.touched">
+        Please Select Role
+      </p>
+
+      <button type="submit" mat-raised-button color="accent">Register</button>
+
+      <div class="signUpLink">
+        Already Have An Account? <a (click)="goToLoginComponent()">Login</a>
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,34 @@
+<div class="login">
+  <div class="center">
+    <h1>Login</h1>
+
+    <form #loginForm="ngForm" (ngSubmit)="submit(loginForm.value)">
+      <div class="formInput">
+        <input type="text" #email="ngModel" name="email" ngModel email required />
+        <label>Email*</label>
+        <span></span>
+      </div>
+      <p class="text-danger" *ngIf="email.invalid && email.touched">Please Enter Valid Email</p>
+
+      <div class="formInput">
+        <input type="{{passProperty}}" #password="ngModel" name="password" ngModel required />
+        <label>Passsword*</label>
+        <mat-icon (click)="showPassword()" matSuffix>visibility</mat-icon>
+        <span></span>
+      </div>
+
+      <p class="text-danger" *ngIf="password.invalid && password.touched">Please Enter Password</p>
+
+      <div class="pass">
+        <p>Forget Password</p>
+      </div>
+
+      <button type="submit" mat-raised-button color="accent">Login</button>
+
+      <div class="signUpLink">
+        Don't Have An Account? <a (click)="goToRegisterComponent()">Signup</a>
+      </div>
+
+    </form>
+  </div>
+</div>

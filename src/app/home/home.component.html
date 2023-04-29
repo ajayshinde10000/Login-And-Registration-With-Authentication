@@ -1,0 +1,64 @@
+<div class="container" *ngIf="!showUser">
+<table id="myTable" mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table mt-3">
+    <!-- Position Column -->
+    <ng-container matColumnDef="SN">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element" (click)="load(element.email)">{{element.SN}}</td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element" (click)="load(element.email)">{{element.name}}</td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element" (click)="load(element.email)">{{element.email}}</td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="company">
+      <th mat-header-cell *matHeaderCellDef>Company</th>
+      <td mat-cell *matCellDef="let element" (click)="load(element.email)">{{element.company}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef>Designation</th>
+        <td mat-cell *matCellDef="let element" (click)="load(element.email)">{{element.role}}</td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+        mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+  </table>
+
+  <ul>
+    <li *ngFor="let clickedRow of clickedRows">
+      Clicked on {{clickedRow.name}}
+    </li>
+  </ul>
+
+</div>
+
+<div *ngIf="showUser" class="">
+    <div class="row">
+        <div class="col-sm-12 myCard">
+          <div class="card p-4">
+            <div class="card-body">
+              <h5 class="card-title fs-4">User Details</h5>
+              <p class="card-text">Name : {{userDetails.name}}</p>
+              <p class="card-text">Email : {{userDetails.email}}</p>
+              <p class="card-text">Company : {{userDetails.company}}</p>
+              <p class="card-text">Designation : {{userDetails.role}}</p>
+              <a class="btn btn-primary" (click)="load('Go Back')">Home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

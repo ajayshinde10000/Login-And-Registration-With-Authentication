@@ -1,0 +1,90 @@
+<div class="profile">
+    
+<div class="container mt-5 bg-light border border-dark rounded">
+  <div class="row">
+    <div
+      class="col-md-4 d-flex flex-column border-end p-4 my-2"
+    >
+      <div style="height: 50%">
+        <div class="centerDiv">
+            <img src="https://t4.ftcdn.net/jpg/01/18/03/35/360_F_118033506_uMrhnrjBWBxVE9sYGTgBht8S5liVnIeY.jpg" class="img-fluid" alt="Profile Image Here">
+        </div>
+      </div>
+      <div class="p-4 mt-4">
+        <p class="fs-4">Details: </p>
+        <div class="userDetails">
+          <p>Name : {{user.name}}</p>
+          <p>Email : {{user.email}}</p>
+          <p>Designation : {{user.role}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 p-5">
+        <p class="fs-1 fw-bold text-primary mb-3">Profile</p>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Name:</label>
+                    <input type="text" class="form-control" [(ngModel)]="name" [disabled]="isDisabled">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Email:</label>
+                    <input type="text" class="form-control" [(ngModel)]="email" [disabled]="isDisabled">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mb-3" *ngIf="isDisabled">
+                    <label for="formGroupExampleInput" class="form-label">Password:</label>
+                    <input type='password' class="form-control" [(ngModel)]="password" [disabled]="isDisabled">
+                </div>
+                <div class="mb-3" *ngIf="!isDisabled">
+                    <label for="formGroupExampleInput" class="form-label">Password:</label>
+                    <input type='text' class="form-control" [(ngModel)]="password" [disabled]="isDisabled">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label" >Company:</label>
+                    <input type="text" class="form-control" [(ngModel)]="company" [disabled]="isDisabled">
+                </div>
+            </div>
+            <!-- <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Designation:</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div> -->
+            <div class="col-md-6 col-sm-12">
+                <label for="formGroupExampleInput" class="form-label">Designation:</label>
+                
+                <div class="designationDiv">
+                    <form class="roleDiv">
+                      <mat-form-field appearance="fill">
+                        <!-- <mat-label>Designation</mat-label> -->
+                        <mat-select
+                          [(ngModel)]="selectedValue"
+                          name="food"
+                          ngModel
+                          #jobRole="ngModel" [disabled]="isDisabled"
+                        >
+                          <mat-option *ngFor="let role of roles" [value]="role.value">
+                            {{ role.viewValue }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </form>
+                  </div>
+            </div>
+            <div class="col-sm-12">
+                <button *ngIf="isDisabled" class="btn btn-danger float-end" (click)="editMyProfile()">Edit Profile</button>
+                <button *ngIf="!isDisabled" class="btn btn-warning float-end px-4" (click)="editMyProfile()">Save</button>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
